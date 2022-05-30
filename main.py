@@ -20,6 +20,12 @@ class MainWindow(QMainWindow):
         
         # EXIBE A APLICAÇÃO
         self.show()
+        
+        # BOTÃO LOGIN
+        self.login.login_btn.clicked.connect(self.teste)
+        
+    def teste(self):
+        print('oi')
 
 
 if __name__ == '__main__':
