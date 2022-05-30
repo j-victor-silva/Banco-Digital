@@ -37,10 +37,13 @@ class Ui_MainWindow(object):
         self.login_menu.setSpacing(20)
         
         # Label Login
-        self.login_label = QLabel('Login')
-        self.login_label.setStyleSheet('font: "jetbrains Mono"; background-color: #183e89')
+        self.login_label = QLabel(self.central_frame)
+        self.login_label.setText('Login')
+        self.login_label.setStyleSheet("""font: jetbrains Mono; 
+                                            color: white;
+                                            background-color: #183e89;
+                                            font-size: 14pt""")
         self.login_label.setAlignment(Qt.AlignHCenter)
-        # self.login_label.setGeometry(QRect(123, 39, 7, 3))
         
         # Placeholder Text Color
         pal = QLineEdit().palette()
@@ -50,20 +53,28 @@ class Ui_MainWindow(object):
         # Line Username
         self.line_user = QLineEdit(placeholderText='Username')
         self.line_user.setMinimumSize(269, 44)
-        self.line_user.setStyleSheet('background-color: white;')
+        self.line_user.setStyleSheet("""background-color: white;
+                                        border-radius: 10px
+                                     """)
         self.line_user.setPalette(text_color)
         
         # Line Password
         self.line_password = QLineEdit(placeholderText='Password')
         self.line_password.setMinimumSize(269, 44)
-        self.line_password.setStyleSheet('background-color: white;')
+        self.line_password.setStyleSheet("""background-color: white;
+                                            border-radius: 10px
+                                         """)
         self.line_password.setPalette(text_color)
         self.line_password.setEchoMode(QLineEdit.EchoMode.Password)
+        
+        # Login Button
+        self.login_btn = QPushButton()
         
         # ADD TO LOGIN LAYOUT
         self.login_menu.addWidget(self.login_label)
         self.login_menu.addWidget(self.line_user)
         self.login_menu.addWidget(self.line_password)
+        self.login_menu.addWidget(self.login_btn)
         
         # ADD TO LAYOUT
         self.main_layout.addWidget(self.login_window)
