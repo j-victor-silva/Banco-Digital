@@ -21,6 +21,13 @@ class MainWindow(QMainWindow):
         
         # EXIBE A APLICAÇÃO
         self.show()
+        
+        # EXIBE A TELA DE REGISTRO
+        self.ui.pagina_inicial.sign_btn.clicked.connect(self.show_registro)
+        
+    def show_registro(self):
+        self.ui.pages.setMaximumSize(QSize(500, 465))
+        self.ui.pages.setCurrentWidget(self.ui.registro.registro)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

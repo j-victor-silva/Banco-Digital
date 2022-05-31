@@ -1,6 +1,7 @@
 # IMPORT QT_CORE
 from qt_core import *
 from login.pages import *
+from login.pages_.login_page import *
 
 
 # MAIN WINDOW
@@ -30,37 +31,26 @@ class Ui_MainWindow(object):
         # ////////////////////////////////////////////////////////////////////
         
         # CREATE MAIN LAYOUT
-        self.main_layout = QVBoxLayout(self.central_frame)
-        
-        # CREATE CENTRAL LAYOUT
-        self.central_layout = QFrame()
-        
-        # CREATE SUB LAYOUT
-        self.sub_layout = QHBoxLayout(self.central_layout)
-        
-        # CREATE SPACERS
-        self.spacer_w_1 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        self.spacer_w_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        self.spacer_h_1 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.spacer_h_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        
+        self.main_layout = QGridLayout(self.central_frame)
+                
         # CREATE PAGES
         self.pages = QStackedWidget(self.central_frame)
         self.pages.setMinimumSize(QSize(341, 385))
         self.pages.setMaximumSize(QSize(341, 385))
-        self.ui_pages = Ui_StackedWidget()
-        self.ui_pages.setupUi(self.pages)
-        self.pages.setCurrentWidget(self.ui_pages.login)
         
-        # SET TO SUB LAYOUT
-        self.sub_layout.addItem(self.spacer_w_1)
-        self.sub_layout.addWidget(self.pages)
-        self.sub_layout.addItem(self.spacer_w_2)
+        # Login Page
+        self.pagina_inicial = PaginaLogin()
+        self.pagina_inicial.setupUi(self.pages)
         
-        # SET TO MAIN LAYOUT
-        self.main_layout.addItem(self.spacer_h_1)
-        self.main_layout.addWidget(self.central_layout)
-        self.main_layout.addItem(self.spacer_h_2)
+        # Sign Up Page
+        self.registro = Registro()
+        self.registro.setupUi(self.pages)
+        
+        # Main Page
+        self.pages.setCurrentWidget(self.pagina_inicial.login)
+        
+        # ADD TO MAIN LAYOUT
+        self.main_layout.addWidget(self.pages)
                 
         # SET TO CENTRAL WIDGET
         parent.setCentralWidget(self.central_frame)

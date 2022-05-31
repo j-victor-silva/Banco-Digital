@@ -1,17 +1,28 @@
 from qt_core import *
 
 
-class Ui_StackedWidget(object):
+class PaginaLogin(object):
+    # FONT
+    font = 'JetBrains Mono'
+    # STYLE LABEL
+    label_style = f"""font: 10pt {font}; 
+                        color: white;
+                        background-color: #183e89;"""
+    # STYLE LINE EDIT
+    line_style = f"""font: 8pt {font};
+                        background-color: white;
+                        border-radius: 10px""" 
+                        
     def setupUi(self, StackedWidget):
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u"StackedWidget")
+        
+        
+        # LOGIN - PÁGINA 1
         self.login = QWidget()
         self.login.setObjectName(u"login")
         StackedWidget.addWidget(self.login)
         
-        self.font = 'JetBrains Mono'
-        
-        # LOGIN
         # ////////////////////////////////////////////////////////////////////
         # LOGIN WINDOW
         self.login_window = QFrame(self.login)
@@ -33,34 +44,25 @@ class Ui_StackedWidget(object):
         # Label Login
         self.login_label = QLabel(self.login_window)
         self.login_label.setText('Login')
-        self.login_label.setStyleSheet(f"""font: 10pt {self.font}; 
-                                            color: white;
-                                            background-color: #183e89;
-                                            font-size: 12pt""")
+        self.login_label.setStyleSheet(self.label_style)
         self.login_label.setAlignment(Qt.AlignHCenter)
         
-        # Placeholder Text Color
+        # PLACEHOLDER TEXT COLOR
         pal = QLineEdit().palette()
-        text_color = QColor('#b4b4b4')
-        pal.setColor(QPalette.PlaceholderText, text_color)
-        
+        self.text_color = QColor('#b4b4b4')
+        pal.setColor(QPalette.PlaceholderText, self.text_color)
+  
         # Line Username
         self.line_user = QLineEdit(placeholderText='Username')
         self.line_user.setMinimumSize(269, 44)
-        self.line_user.setStyleSheet(f"""font: 8pt {self.font};
-                                        background-color: white;
-                                        border-radius: 10px
-                                     """)
-        self.line_user.setPalette(text_color)
+        self.line_user.setStyleSheet(self.line_style)
+        self.line_user.setPalette(self.text_color)
         
         # Line Password
         self.line_password = QLineEdit(placeholderText='Password')
         self.line_password.setMinimumSize(269, 44)
-        self.line_password.setStyleSheet(f"""font: 8pt {self.font};
-                                            background-color: white;
-                                            border-radius: 10px
-                                         """)
-        self.line_password.setPalette(text_color)
+        self.line_password.setStyleSheet(self.line_style)
+        self.line_password.setPalette(self.text_color)
         self.line_password.setEchoMode(QLineEdit.EchoMode.Password)
         
         # Login Button
@@ -99,7 +101,6 @@ class Ui_StackedWidget(object):
         self.bottom_layout.addWidget(self.sign_btn)
         self.bottom_layout.addItem(self.bottom_spacer)
         self.bottom_layout.addWidget(self.forgot_btn)
-        
         # ////////////////////////////////////////////////////////////////////
         
         # ////////////////////////////////////////////////////////////////////
@@ -111,10 +112,8 @@ class Ui_StackedWidget(object):
         self.login_menu.addItem(self.spacer)
         self.login_menu.addWidget(self.login_btn)
         self.login_menu.addLayout(self.bottom_layout, 8, 0)
-        
-        self.registro = QWidget()
-        self.registro.setObjectName(u"registro")
-        StackedWidget.addWidget(self.registro)
+        # ////////////////////////////////////////////////////////////////////
+
         self.recuperar_conta = QWidget()
         self.recuperar_conta.setObjectName(u"recuperar_conta")
         StackedWidget.addWidget(self.recuperar_conta)
