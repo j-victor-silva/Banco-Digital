@@ -7,6 +7,7 @@ from qt_core import *
 
 # IMPORT LOGIN WINDOW
 from login.login_window import Ui_MainWindow
+from login.pages import *
 
 
 # MAIN WINDOW
@@ -15,18 +16,11 @@ class MainWindow(QMainWindow):
         super().__init__()
         
         # CHAMA A CLASSE DE LOGIN
-        self.login = Ui_MainWindow()
-        self.login.setup_ui(self)
+        self.ui = Ui_MainWindow()
+        self.ui.setup_ui(self)
         
         # EXIBE A APLICAÇÃO
         self.show()
-        
-        # BOTÃO LOGIN
-        self.login.login_btn.clicked.connect(self.teste)
-        
-    def teste(self):
-        print('oi')
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

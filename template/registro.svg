@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="960"
+   height="600"
+   viewBox="0 0 253.99999 158.75"
+   version="1.1"
+   id="svg264"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="registro.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview266"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.71181884"
+     inkscape:cx="354.02266"
+     inkscape:cy="373.69059"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs261" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="mix-blend-mode:normal;fill:#00153f;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+       id="rect1535"
+       width="254.98645"
+       height="159.45947"
+       x="-0.4932251"
+       y="-0.35473633"
+       inkscape:label="Fundo" />
+    <rect
+       style="fill:#183e89;fill-opacity:1;stroke:#000000;stroke-width:0.290913;stroke-opacity:1"
+       id="rect4707"
+       width="89.931999"
+       height="122.86305"
+       x="82.033997"
+       y="17.943474"
+       inkscape:label="login_window" />
+    <rect
+       style="fill:#0d81a5;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+       id="rect4918-8-4"
+       width="70.908333"
+       height="11.377084"
+       x="91.54583"
+       y="118.26902"
+       inkscape:label="password_line" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#c2c2c2;stroke-width:0.230472;stroke-opacity:1"
+       id="rect4918"
+       width="53.642529"
+       height="11.411195"
+       x="108.99123"
+       y="45.960758"
+       inkscape:label="usuario" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#c2c2c2;stroke-width:0.230474;stroke-opacity:1"
+       id="rect4918-3"
+       width="53.642525"
+       height="11.411199"
+       x="108.9913"
+       y="63.071777"
+       inkscape:label="senha" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#c2c2c2;stroke-width:0.230474;stroke-opacity:1"
+       id="rect4918-3-4"
+       width="53.642525"
+       height="11.411199"
+       x="108.99123"
+       y="80.079185"
+       inkscape:label="senha_confirm" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#c2c2c2;stroke-width:0.230474;stroke-opacity:1"
+       id="rect4918-3-4-6"
+       width="53.642525"
+       height="11.411199"
+       x="108.99123"
+       y="97.15625"
+       inkscape:label="email" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#0d2046;stroke-width:0.264583"
+       x="120.39808"
+       y="31.294508"
+       id="text710"><tspan
+         sodipodi:role="line"
+         id="tspan708"
+         style="font-size:3.175px;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+         x="120.39808"
+         y="31.294508">Registro</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       x="94.654716"
+       y="52.818695"
+       id="text1371"><tspan
+         sodipodi:role="line"
+         id="tspan1369"
+         style="stroke-width:0.264583"
+         x="94.654716"
+         y="52.818695">Usuário:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       x="95.78093"
+       y="69.646942"
+       id="text1375"><tspan
+         sodipodi:role="line"
+         id="tspan1373"
+         style="stroke-width:0.264583"
+         x="95.78093"
+         y="69.646942">Senha:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;white-space:pre;inline-size:17.9526;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       x="90.518715"
+       y="83.054871"
+       id="text1379"
+       transform="translate(0,1.5875)"><tspan
+         x="90.518715"
+         y="83.054871"
+         id="tspan1412">Confirmar </tspan><tspan
+         x="90.518715"
+         y="87.023617"
+         id="tspan1414">Senha:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       x="92.503609"
+       y="103.55926"
+       id="text1383"><tspan
+         sodipodi:role="line"
+         id="tspan1381"
+         style="stroke-width:0.264583"
+         x="92.503609"
+         y="103.55926">Email:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       x="119.67021"
+       y="125.10446"
+       id="text1387"><tspan
+         sodipodi:role="line"
+         id="tspan1385"
+         style="stroke-width:0.264583"
+         x="119.67021"
+         y="125.10446">Registrar</tspan></text>
+  </g>
+</svg>

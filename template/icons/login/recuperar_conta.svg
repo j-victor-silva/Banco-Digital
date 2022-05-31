@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="960"
+   height="600"
+   viewBox="0 0 253.99999 158.75"
+   version="1.1"
+   id="svg1419"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="recuperar_conta.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1421"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.0066639"
+     inkscape:cx="439.07407"
+     inkscape:cy="336.75591"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1416" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="mix-blend-mode:normal;fill:#00153f;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+       id="rect1535"
+       width="254.98645"
+       height="159.45947"
+       x="-0.4932251"
+       y="-0.35473633"
+       inkscape:label="Fundo" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="tela">
+    <rect
+       style="fill:#183e89;fill-opacity:1;stroke:#000000;stroke-width:0.190316;stroke-opacity:1"
+       id="rect4707"
+       width="90.0326"
+       height="52.524704"
+       x="81.983696"
+       y="53.112648"
+       inkscape:label="login_window" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#ffffff;stroke-width:0.264583"
+       x="113.99226"
+       y="60.234039"
+       id="text1633"><tspan
+         sodipodi:role="line"
+         id="tspan1631"
+         style="stroke-width:0.264583"
+         x="113.99226"
+         y="60.234039">Recuperar conta</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="tela 2">
+    <rect
+       style="fill:#0d81a5;fill-opacity:1;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+       id="rect4918-8-4"
+       width="70.908333"
+       height="11.377084"
+       x="91.54583"
+       y="85.482582"
+       inkscape:label="password_line" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       x="118.78112"
+       y="92.005959"
+       id="text3589"><tspan
+         sodipodi:role="line"
+         id="tspan3587"
+         style="stroke-width:0.264583;fill:#ffffff;fill-opacity:1"
+         x="118.78112"
+         y="92.005959">Recuperar</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="tela 1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#c2c2c2;stroke-width:0.264583;stroke-opacity:1"
+       id="rect4918"
+       width="70.908333"
+       height="11.377084"
+       x="91.54583"
+       y="66.807281"
+       inkscape:label="user_line" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#ffffff;stroke-width:0.264583"
+       x="96.395142"
+       y="73.677925"
+       id="text1659"><tspan
+         sodipodi:role="line"
+         id="tspan1657"
+         style="fill:#b4b4b4;fill-opacity:1;stroke-width:0.264583"
+         x="96.395142"
+         y="73.677925">Email</tspan></text>
+  </g>
+</svg>
