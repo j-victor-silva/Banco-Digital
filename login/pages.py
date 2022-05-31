@@ -84,6 +84,7 @@ class PaginaLogin(object):
         self.sign_btn.setStyleSheet(f"""font: 7.5pt {self.font};
                                         background-color: #183e89;
                                         color: white;
+                                        border-radius: 10px;
                                         border: none""")
         
         # Bottom Spacer

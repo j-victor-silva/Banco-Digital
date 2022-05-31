@@ -1,7 +1,7 @@
 # IMPORT QT_CORE
 from qt_core import *
 from login.pages import *
-from login.pages_.login_page import *
+from login.pages_.registro import *
 
 
 # MAIN WINDOW
