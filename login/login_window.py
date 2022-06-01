@@ -2,6 +2,7 @@
 from qt_core import *
 from login.pages import *
 from login.pages_.registro import *
+from login.pages_.recuperar_conta_1 import *
 
 
 # MAIN WINDOW
@@ -45,6 +46,10 @@ class Ui_MainWindow(object):
         # Sign Up Page
         self.registro = Registro()
         self.registro.setupUi(self.pages)
+        
+        # Forgot Password Page
+        self.forgot_pass = RecuperarConta()
+        self.forgot_pass.setupUi(self.pages)
         
         # Main Page
         self.pages.setCurrentWidget(self.pagina_inicial.login)

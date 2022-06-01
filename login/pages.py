@@ -1,6 +1,8 @@
+# IMPORT QT CORE
 from qt_core import *
 
 
+# CLASSE DA PÁGINA DE LOGIN
 class PaginaLogin(object):
     # FONT
     font = 'JetBrains Mono'
@@ -30,6 +32,8 @@ class PaginaLogin(object):
         self.login_window.setStyleSheet("""#login_window {
                                             background-color: #183e89;
                                             }""")
+        self.login_window.setMinimumSize(QSize(341, 385))
+        self.login_window.setMaximumSize(QSize(341, 385))
         # ////////////////////////////////////////////////////////////////////
         
         # ////////////////////////////////////////////////////////////////////
@@ -71,7 +75,8 @@ class PaginaLogin(object):
         self.login_btn.setStyleSheet(f"""background-color: #0d81a5;
                                         border-radius: 10px;
                                         border: none;
-                                        font: 10pt {self.font}""")
+                                        font: 10pt {self.font};
+                                        color: white""")
         
         # Spacer Inter-Lines
         self.spacer = QSpacerItem(268, 85)

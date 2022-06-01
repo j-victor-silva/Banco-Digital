@@ -28,13 +28,21 @@ class MainWindow(QMainWindow):
         # VOLTA PARA A TELA DE LOGIN
         self.ui.registro.voltar.clicked.connect(self.show_login)
         
+        # EXIBE A TELA DE RECUPERAR SENHA
+        self.ui.pagina_inicial.forgot_btn.clicked.connect(self.show_forgot)
+        
+        # Teste
+        self.ui.forgot_pass.back.clicked.connect(self.show_login)
     def show_registro(self):
-        self.ui.pages.setMaximumSize(QSize(341, 465))
+        # self.ui.pages.setMaximumSize(QSize(341, 465))
         self.ui.pages.setCurrentWidget(self.ui.registro.registro)
         
     def show_login(self):
-        self.ui.pages.setMaximumSize(QSize(341, 385))
+        # self.ui.pages.setMaximumSize(QSize(341, 385))
         self.ui.pages.setCurrentWidget(self.ui.pagina_inicial.login)
+        
+    def show_forgot(self):
+        self.ui.pages.setCurrentWidget(self.ui.forgot_pass.recuperar_conta)
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
