@@ -138,8 +138,8 @@ class Registro(object):
         
         # Back Button
         self.voltar = QPushButton(self.registro_frame,text='Voltar')
-        self.voltar.setMinimumSize(QSize(283, 20))
-        self.voltar.setMaximumSize(QSize(283, 20))
+        # self.voltar.setMinimumSize(QSize(283, 20))
+        # self.voltar.setMaximumSize(QSize(283, 20))
         self.voltar.setStyleSheet(f"""background-color: #183e89;
                                         border: none;
                                         color: white;
@@ -166,5 +166,5 @@ class Registro(object):
         self.registro_layout.addWidget(self.label_registro,0,0, Qt.AlignHCenter)
         self.registro_layout.addLayout(self.form_layout, 1, 0)
         self.registro_layout.addWidget(self.sign_up_btn, 2, 0, Qt.AlignTop)
-        self.registro_layout.addWidget(self.voltar, 3, 0, Qt.AlignTop | Qt.AlignVCenter)
+        self.registro_layout.addWidget(self.voltar, 3, 0, Qt.AlignTop | Qt.AlignHCenter)
         self.registro_layout.addItem(self.spacer, 4, 0, Qt.AlignTop)
