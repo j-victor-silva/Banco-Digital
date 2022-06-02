@@ -34,8 +34,11 @@ class MainWindow(QMainWindow):
         # VOLTA PARA A TELA DE LOGIN A PARTIR DA TELA DE RECUPERAÇÃO
         self.ui.forgot_pass.back.clicked.connect(self.show_login)
         
-        # RESERVADO PARA PROSSEGUIR NA RECUPERAÇÃO
+        # VAI PARA A TELA DE CÓDIGO DE RECUPERAÇÃO
         self.ui.forgot_pass.recuperar_btn.clicked.connect(self.show_code)
+        
+        # VOLTA PARA A TELA DE EMAIL A PARTIR DA TELA DE CÓDIGO
+        self.ui.code.back.clicked.connect(self.show_forgot)
         
     def show_registro(self):
         # self.ui.pages.setMaximumSize(QSize(341, 465))

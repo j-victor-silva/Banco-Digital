@@ -41,8 +41,8 @@ class CodigoPage(object):
         self.code_window.setObjectName('code_window')
         self.code_window.setStyleSheet("""#code_window {
                                             background-color: #183e89;}""")
-        self.code_window.setMinimumSize(QSize(341, 199))
-        self.code_window.setMaximumSize(QSize(341, 199))
+        self.code_window.setMinimumSize(QSize(341, 260))
+        self.code_window.setMaximumSize(QSize(341, 260))
         # ////////////////////////////////////////////////////////////////////
         
         # CREATE LAYOUT
@@ -50,10 +50,21 @@ class CodigoPage(object):
         self.code_layout.setContentsMargins(30,20,30,20)
         self.code_layout.setSpacing(20)
         
+        # BACK BUTTON
+        self.back = QPushButton(self.code_window, text='Voltar')
+        self.back.setStyleSheet(f"""background-color: #183e89;
+                                    border: none;
+                                    font: 7.5pt {self.font};
+                                    color: white;""")
+        self.back.setMinimumSize(QSize(40, 20))
+        self.back.setMaximumSize(QSize(40, 20))
+        
         # Label Top
         self.label = QLabel(self.code_window)
         self.label.setText('Foi enviado um código para seu email.')
         self.label.setStyleSheet(self.label_style)
+        self.label.setMinimumSize(QSize(269,20))
+        self.label.setMaximumSize(QSize(269,20))
         
         # PLACEHOLDER TEXT COLOR
         pal = QLineEdit().palette()
@@ -88,9 +99,10 @@ class CodigoPage(object):
         self.resend_code.setMaximumSize(QSize(80, 20))
         
         # ADD TO LAYOUT
-        self.code_layout.addWidget(self.label, Qt.AlignHCenter)
-        self.code_layout.addWidget(self.line_code, Qt.AlignHCenter)
-        self.code_layout.addWidget(self.recuperar_btn, Qt.AlignHCenter)
-        # self.code_layout.addWidget(self.resend_code, Qt.AlignVCenter)
+        self.code_layout.addWidget(self.back, 0)
+        self.code_layout.addWidget(self.label, 1, Qt.AlignHCenter)
+        self.code_layout.addWidget(self.line_code, 2, Qt.AlignHCenter)
+        self.code_layout.addWidget(self.recuperar_btn, 3, Qt.AlignHCenter)
+        self.code_layout.addWidget(self.resend_code, 4, Qt.AlignHCenter)
         
         
