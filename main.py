@@ -40,6 +40,9 @@ class MainWindow(QMainWindow):
         # VOLTA PARA A TELA DE EMAIL A PARTIR DA TELA DE CÓDIGO
         self.ui.code.back.clicked.connect(self.show_forgot)
         
+        # VAI PARA A TELA DE CRIAÇÃO DE NOVA SENHA
+        self.ui.code.recuperar_btn.clicked.connect(self.show_new_pass)
+        
     def show_registro(self):
         # self.ui.pages.setMaximumSize(QSize(341, 465))
         self.ui.pages.setCurrentWidget(self.ui.registro.registro)
@@ -53,6 +56,9 @@ class MainWindow(QMainWindow):
     
     def show_code(self):
         self.ui.pages.setCurrentWidget(self.ui.code.code_page)
+        
+    def show_new_pass(self):
+        self.ui.pages.setCurrentWidget(self.ui.pass_page.pass_page)
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)

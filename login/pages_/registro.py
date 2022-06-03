@@ -19,12 +19,10 @@ class Registro(object):
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u"StackedWidget")
 
-        # ////////////////////////////////////////////////////////////////////
         # REGISTRO - PÁGINA 2
         self.registro = QWidget()
         self.registro.setObjectName(u"registro")
         StackedWidget.addWidget(self.registro)
-        # ////////////////////////////////////////////////////////////////////
         
         # SIZE POLICY
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -36,7 +34,6 @@ class Registro(object):
         sizePolicy_label.setVerticalStretch(0)
         
         
-        # ////////////////////////////////////////////////////////////////////
         # REGISTRO WINDOW
         self.registro_frame = QFrame(self.registro)
         self.registro_frame.setObjectName('registro_frame')
@@ -44,9 +41,7 @@ class Registro(object):
                                             background-color: #183e89; }""")
         self.registro_frame.setMinimumSize(QSize(341, 465))
         self.registro_frame.setMaximumSize(QSize(341, 465))
-        # ////////////////////////////////////////////////////////////////////
         
-        # ////////////////////////////////////////////////////////////////////
         # CREATE REGISTRO LAYOUT
         self.registro_layout = QGridLayout(self.registro_frame)        
         self.registro_layout.setContentsMargins(30,20,30,20)
@@ -138,8 +133,6 @@ class Registro(object):
         
         # Back Button
         self.voltar = QPushButton(self.registro_frame,text='Voltar')
-        # self.voltar.setMinimumSize(QSize(283, 20))
-        # self.voltar.setMaximumSize(QSize(283, 20))
         self.voltar.setStyleSheet(f"""background-color: #183e89;
                                         border: none;
                                         color: white;
@@ -162,7 +155,6 @@ class Registro(object):
         self.form_layout.setWidget(3, QFormLayout.FieldRole, self.line_email_regi)  
         
         # ADD TO LAYOUT
-        # self.registro_layout.addItem(self.spacer_top,0,0)
         self.registro_layout.addWidget(self.label_registro,0,0, Qt.AlignHCenter)
         self.registro_layout.addLayout(self.form_layout, 1, 0)
         self.registro_layout.addWidget(self.sign_up_btn, 2, 0, Qt.AlignTop)

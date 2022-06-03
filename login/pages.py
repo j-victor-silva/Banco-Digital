@@ -25,7 +25,6 @@ class PaginaLogin(object):
         self.login.setObjectName(u"login")
         StackedWidget.addWidget(self.login)
         
-        # ////////////////////////////////////////////////////////////////////
         # LOGIN WINDOW
         self.login_window = QFrame(self.login)
         self.login_window.setObjectName('login_window')
@@ -34,9 +33,7 @@ class PaginaLogin(object):
                                             }""")
         self.login_window.setMinimumSize(QSize(341, 385))
         self.login_window.setMaximumSize(QSize(341, 385))
-        # ////////////////////////////////////////////////////////////////////
         
-        # ////////////////////////////////////////////////////////////////////
         # LOGIN MENU LAYOUT
         self.login_menu = QGridLayout(self.login_window)
         self.login_menu.setContentsMargins(30, 20, 30, 20)
@@ -57,20 +54,20 @@ class PaginaLogin(object):
         pal.setColor(QPalette.PlaceholderText, self.text_color)
   
         # Line Username
-        self.line_user = QLineEdit(placeholderText='Username')
+        self.line_user = QLineEdit(self.login_window, placeholderText='Username')
         self.line_user.setMinimumSize(269, 44)
         self.line_user.setStyleSheet(self.line_style)
         self.line_user.setPalette(self.text_color)
         
         # Line Password
-        self.line_password = QLineEdit(placeholderText='Password')
+        self.line_password = QLineEdit(self.login_window, placeholderText='Password')
         self.line_password.setMinimumSize(269, 44)
         self.line_password.setStyleSheet(self.line_style)
         self.line_password.setPalette(self.text_color)
         self.line_password.setEchoMode(QLineEdit.EchoMode.Password)
         
         # Login Button
-        self.login_btn = QPushButton(text='Entrar')
+        self.login_btn = QPushButton(self.login_window, text='Entrar')
         self.login_btn.setMinimumSize(269, 44)
         self.login_btn.setStyleSheet(f"""background-color: #0d81a5;
                                         border-radius: 10px;
@@ -85,7 +82,7 @@ class PaginaLogin(object):
         self.bottom_layout = QHBoxLayout()
         
         # Registro Button
-        self.sign_btn = QPushButton(text='Registrar')
+        self.sign_btn = QPushButton(self.login_window, text='Registrar')
         self.sign_btn.setStyleSheet(f"""font: 7.5pt {self.font};
                                         background-color: #183e89;
                                         color: white;
@@ -96,7 +93,7 @@ class PaginaLogin(object):
         self.bottom_spacer = QSpacerItem(80, 15)
         
         # Forgot Password Button
-        self.forgot_btn = QPushButton()
+        self.forgot_btn = QPushButton(self.login_window)
         self.forgot_btn.setText('Esqueci minha senha')
         self.forgot_btn.setStyleSheet(f"""font: 7.5pt {self.font};
                                           background-color: #183e89;
@@ -107,19 +104,12 @@ class PaginaLogin(object):
         self.bottom_layout.addWidget(self.sign_btn)
         self.bottom_layout.addItem(self.bottom_spacer)
         self.bottom_layout.addWidget(self.forgot_btn)
-        # ////////////////////////////////////////////////////////////////////
         
-        # ////////////////////////////////////////////////////////////////////
         # ADD TO LOGIN LAYOUT
-        self.login_menu.addItem(self.spacer_top)
-        self.login_menu.addWidget(self.login_label)
-        self.login_menu.addWidget(self.line_user)
-        self.login_menu.addWidget(self.line_password)
-        self.login_menu.addItem(self.spacer)
-        self.login_menu.addWidget(self.login_btn)
-        self.login_menu.addLayout(self.bottom_layout, 8, 0)
-        # ////////////////////////////////////////////////////////////////////
-
-        self.recuperar_conta = QWidget()
-        self.recuperar_conta.setObjectName(u"recuperar_conta")
-        StackedWidget.addWidget(self.recuperar_conta)
+        self.login_menu.addWidget(self.login_label,0,0, Qt.AlignHCenter)
+        self.login_menu.addWidget(self.line_user,1,0,Qt.AlignHCenter)
+        self.login_menu.addWidget(self.line_password,2,0,Qt.AlignHCenter)
+        self.login_menu.addItem(self.spacer,3,0,Qt.AlignHCenter)
+        self.login_menu.addWidget(self.login_btn,4,0,Qt.AlignHCenter)
+        self.login_menu.addItem(self.spacer_top,5,0, Qt.AlignHCenter)
+        self.login_menu.addLayout(self.bottom_layout, 6, 0, Qt.AlignHCenter)

@@ -1,9 +1,10 @@
 # IMPORT QT_CORE
 from qt_core import *
-from login.pages import *
-from login.pages_.registro import *
-from login.pages_.recuperar_conta_1 import *
-from login.pages_.recuperar_conta_2 import *
+from login.pages import PaginaLogin
+from login.pages_.registro import Registro
+from login.pages_.recuperar_conta_1 import RecuperarConta
+from login.pages_.recuperar_conta_2 import CodigoPage
+from login.pages_.recuperar_conta_3 import PasswordPage
 
 
 # MAIN WINDOW
@@ -15,7 +16,6 @@ class Ui_MainWindow(object):
         
         self.font = 'JetBrains Mono'  
             
-        # ////////////////////////////////////////////////////////////////////
         # SET INITIAL PARAMETERS
         parent.resize(960, 600)
         
@@ -30,7 +30,6 @@ class Ui_MainWindow(object):
         # SET CENTRAL WIDGET
         self.central_frame = QFrame()
         self.central_frame.setStyleSheet("""background-color: #00153f""")
-        # ////////////////////////////////////////////////////////////////////
         
         # CREATE MAIN LAYOUT
         self.main_layout = QGridLayout(self.central_frame)
@@ -56,6 +55,10 @@ class Ui_MainWindow(object):
         self.code = CodigoPage()
         self.code.setupUi(self.pages)
         
+        # Password Page
+        self.pass_page = PasswordPage()
+        self.pass_page.setupUi(self.pages)
+        
         # Main Page
         self.pages.setCurrentWidget(self.pagina_inicial.login)
         
@@ -64,4 +67,3 @@ class Ui_MainWindow(object):
                 
         # SET TO CENTRAL WIDGET
         parent.setCentralWidget(self.central_frame)
-        # ////////////////////////////////////////////////////////////////////

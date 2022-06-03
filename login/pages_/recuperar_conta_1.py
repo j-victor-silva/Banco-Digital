@@ -20,7 +20,6 @@ class RecuperarConta(object):
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u'StackedWidget')
             
-        # ////////////////////////////////////////////////////////////////////
         # RECUPERAR SENHA - PÁGINA 3
         self.recuperar_conta = QWidget()
         self.recuperar_conta.setObjectName(u'recuperar_conta')
@@ -35,7 +34,6 @@ class RecuperarConta(object):
         sizePolicy_label.setHorizontalStretch(0)
         sizePolicy_label.setVerticalStretch(0)
 
-        # ////////////////////////////////////////////////////////////////////
         # FORGOT PASS WINDOW
         self.forgot_pass_frame = QFrame(self.recuperar_conta)
         self.forgot_pass_frame.setObjectName(u'forgot_pass_frame')
@@ -44,7 +42,6 @@ class RecuperarConta(object):
                                                 }""")
         self.forgot_pass_frame.setMinimumSize(QSize(341,199))
         self.forgot_pass_frame.setMaximumSize(QSize(341,199))
-        # ////////////////////////////////////////////////////////////////////
         
         # CREATE LAYOUT
         self.layout = QVBoxLayout(self.forgot_pass_frame)

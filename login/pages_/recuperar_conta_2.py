@@ -2,7 +2,7 @@
 from qt_core import *
 
 
-# CLASS DA PÁGINA DE CÓDIGO
+# CLASSE DA PÁGINA DE CÓDIGO
 class CodigoPage(object):
     # FONT
     font = 'JetBrains Mono'
@@ -19,7 +19,6 @@ class CodigoPage(object):
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u'StackedWidget')
             
-        # ////////////////////////////////////////////////////////////////////
         # RECUPERAR SENHA / CODIGO - PÁGINA 4
         self.code_page = QWidget()
         self.code_page.setObjectName('code_page')
@@ -33,9 +32,7 @@ class CodigoPage(object):
         sizePolicy_label = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
         sizePolicy_label.setHorizontalStretch(0)
         sizePolicy_label.setVerticalStretch(0)
-        # ////////////////////////////////////////////////////////////////////
-
-        # ////////////////////////////////////////////////////////////////////
+        
         # CODE WINDOW
         self.code_window = QFrame(self.code_page)
         self.code_window.setObjectName('code_window')
@@ -43,7 +40,6 @@ class CodigoPage(object):
                                             background-color: #183e89;}""")
         self.code_window.setMinimumSize(QSize(341, 260))
         self.code_window.setMaximumSize(QSize(341, 260))
-        # ////////////////////////////////////////////////////////////////////
         
         # CREATE LAYOUT
         self.code_layout = QVBoxLayout(self.code_window)
