@@ -79,7 +79,7 @@ class CodigoPage(object):
         self.recuperar_btn = QPushButton(self.code_window, text='Recuperar senha')
         self.recuperar_btn.setStyleSheet(f"""background-color: #0d81a5;
                                                 color: white;
-                                                font: 7.5pt {self.font};
+                                                font: 10pt {self.font};
                                                 border: none;
                                                 border-radius: 10px""")
         self.recuperar_btn.setMinimumSize(QSize(269,44))

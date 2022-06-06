@@ -15,7 +15,7 @@ class PaginaLogin(object):
                         background-color: white;
                         border-radius: 10px""" 
                         
-    def setupUi(self, StackedWidget):
+    def setupUi(self, StackedWidget) -> None:
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u"StackedWidget")
         
@@ -31,17 +31,14 @@ class PaginaLogin(object):
         self.login_window.setStyleSheet("""#login_window {
                                             background-color: #183e89;
                                             }""")
-        self.login_window.setMinimumSize(QSize(341, 385))
-        self.login_window.setMaximumSize(QSize(341, 385))
+        self.login_window.setMinimumSize(QSize(341, 310))
+        self.login_window.setMaximumSize(QSize(341, 310))
         
         # LOGIN MENU LAYOUT
         self.login_menu = QGridLayout(self.login_window)
         self.login_menu.setContentsMargins(30, 20, 30, 20)
         self.login_menu.setSpacing(20)
-        
-        # Spacer Top
-        self.spacer_top = QSpacerItem(0, 20)
-        
+                
         # Label Login
         self.login_label = QLabel(self.login_window)
         self.login_label.setText('Login')
@@ -106,10 +103,9 @@ class PaginaLogin(object):
         self.bottom_layout.addWidget(self.forgot_btn)
         
         # ADD TO LOGIN LAYOUT
-        self.login_menu.addWidget(self.login_label,0,0, Qt.AlignHCenter)
-        self.login_menu.addWidget(self.line_user,1,0,Qt.AlignHCenter)
-        self.login_menu.addWidget(self.line_password,2,0,Qt.AlignHCenter)
-        self.login_menu.addItem(self.spacer,3,0,Qt.AlignHCenter)
-        self.login_menu.addWidget(self.login_btn,4,0,Qt.AlignHCenter)
-        self.login_menu.addItem(self.spacer_top,5,0, Qt.AlignHCenter)
+        self.login_menu.addWidget(self.login_label,1,0, Qt.AlignHCenter)
+        self.login_menu.addWidget(self.line_user,2,0,Qt.AlignHCenter)
+        self.login_menu.addWidget(self.line_password,3,0,Qt.AlignHCenter)
+        self.login_menu.addItem(self.spacer,4,0,Qt.AlignHCenter)
+        self.login_menu.addWidget(self.login_btn,5,0,Qt.AlignHCenter)
         self.login_menu.addLayout(self.bottom_layout, 6, 0, Qt.AlignHCenter)

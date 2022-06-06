@@ -9,7 +9,7 @@ from login.pages_.recuperar_conta_3 import PasswordPage
 
 # MAIN WINDOW
 class Ui_MainWindow(object):
-    def setup_ui(self, parent):
+    def setup_ui(self, parent) -> None:
         if not parent.objectName():
             parent.setObjectName('MainWindow')
         parent.setWindowTitle('Login')      

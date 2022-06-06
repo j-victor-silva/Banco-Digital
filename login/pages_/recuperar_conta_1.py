@@ -16,7 +16,7 @@ class RecuperarConta(object):
                         background-color: white;
                         border-radius: 10px"""
     
-    def setupUi(self, StackedWidget):
+    def setupUi(self, StackedWidget) -> None:
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u'StackedWidget')
             
@@ -70,7 +70,7 @@ class RecuperarConta(object):
         self.recuperar_btn.setStyleSheet(f"""background-color: #0d81a5;
                                             border: none;
                                             border-radius: 10px;
-                                            font: 7.5pt {self.font};
+                                            font: 10pt {self.font};
                                             color: white
                                          """)
         self.recuperar_btn.setMinimumSize(QSize(269,44))

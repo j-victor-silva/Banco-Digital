@@ -77,7 +77,7 @@ class PasswordPage(object):
                                             color: white;
                                             border: none;
                                             border-radius: 10px;
-                                            font: 7.5pt {self.font}""")
+                                            font: 10pt {self.font}""")
         self.alter_pass.setMinimumSize(QSize(269,44))
         self.alter_pass.setMaximumSize(QSize(269,44))
         

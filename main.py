@@ -7,12 +7,10 @@ from qt_core import *
 
 # IMPORT LOGIN WINDOW
 from login.login_window import Ui_MainWindow
-from login.pages import *
-
 
 # MAIN WINDOW
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         
         # CHAMA A CLASSE DE LOGIN
@@ -43,21 +41,21 @@ class MainWindow(QMainWindow):
         # VAI PARA A TELA DE CRIAÇÃO DE NOVA SENHA
         self.ui.code.recuperar_btn.clicked.connect(self.show_new_pass)
         
-    def show_registro(self):
+    def show_registro(self) -> None:
         # self.ui.pages.setMaximumSize(QSize(341, 465))
         self.ui.pages.setCurrentWidget(self.ui.registro.registro)
         
-    def show_login(self):
+    def show_login(self) -> None:
         # self.ui.pages.setMaximumSize(QSize(341, 385))
         self.ui.pages.setCurrentWidget(self.ui.pagina_inicial.login)
         
-    def show_forgot(self):
+    def show_forgot(self) -> None:
         self.ui.pages.setCurrentWidget(self.ui.forgot_pass.recuperar_conta)
     
-    def show_code(self):
+    def show_code(self) -> None:
         self.ui.pages.setCurrentWidget(self.ui.code.code_page)
         
-    def show_new_pass(self):
+    def show_new_pass(self) -> None:
         self.ui.pages.setCurrentWidget(self.ui.pass_page.pass_page)
         
 if __name__ == '__main__':
