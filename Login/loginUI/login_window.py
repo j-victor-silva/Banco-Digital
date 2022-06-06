@@ -1,10 +1,10 @@
 # IMPORT QT_CORE
 from qt_core import *
-from login.pages import PaginaLogin
-from login.pages_.registro import Registro
-from login.pages_.recuperar_conta_1 import RecuperarConta
-from login.pages_.recuperar_conta_2 import CodigoPage
-from login.pages_.recuperar_conta_3 import PasswordPage
+from Login.loginUI.pages import PaginaLogin
+from Login.loginUI.pages_.registro import Registro
+from Login.loginUI.pages_.recuperar_conta_1 import RecuperarConta
+from Login.loginUI.pages_.recuperar_conta_2 import CodigoPage
+from Login.loginUI.pages_.recuperar_conta_3 import PasswordPage
 
 
 # MAIN WINDOW

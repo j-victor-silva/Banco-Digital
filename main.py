@@ -6,7 +6,10 @@ import sys
 from qt_core import *
 
 # IMPORT LOGIN WINDOW
-from login.login_window import Ui_MainWindow
+from Login.loginUI.login_window import Ui_MainWindow
+
+# IMPORT LOGIN CONFIG
+from Login.loginConfig.authenticator import autenticar
 
 # MAIN WINDOW
 class MainWindow(QMainWindow):
@@ -17,8 +20,14 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setup_ui(self)
         
+        # CHAMA A CLASSE DE CONFIGURAÇÕES DE LOGIN
+        # self.login_config = Autenticar()
+        
         # EXIBE A APLICAÇÃO
         self.show()
+        
+        # BOTÃO DE LOGIN
+        self.ui.pagina_inicial.login_btn.clicked.connect(autenticar)
         
         # EXIBE A TELA DE REGISTRO
         self.ui.pagina_inicial.sign_btn.clicked.connect(self.show_registro)
