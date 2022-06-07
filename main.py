@@ -1,6 +1,7 @@
 # IMPORT MODULES
 import os
 import sys
+import time
 
 # IMPORT QT_CORE
 from qt_core import *
@@ -66,14 +67,16 @@ class MainWindow(QMainWindow):
         self.ui.pages.setCurrentWidget(self.ui.pass_page.pass_page)
         
     def autenticar(self):
-        # Irá autenticar o usuário caso ele exista no banco de dados
         index = 0
         while True:
             self.conexao.data('cadastro')
             user = self.ui.pagina_inicial.line_user.text()
             password = self.ui.pagina_inicial.line_password.text()
-
+            
             try:
+                if user == '' or password == '':
+                    break
+              
                 if not user == self.conexao.listar[index]['user'] or not password == self.conexao.listar[index]['password']:
                     index += 1
 
@@ -83,7 +86,10 @@ class MainWindow(QMainWindow):
                     return
 
             except IndexError as e:
-                valido = False
+                self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_on)
+                # time.sleep(3)
+                self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_off)
+                return
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)

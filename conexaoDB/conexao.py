@@ -11,7 +11,7 @@ class ConexaoDB():
             password='',
             db='contas_banco',
             charset='utf8mb4',
-            cursorclass=pymysql.cursors.Cursor
+            cursorclass=pymysql.cursors.DictCursor
         )
 
         self.cursor = self.conexao.cursor()

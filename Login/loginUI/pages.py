@@ -4,13 +4,16 @@ from qt_core import *
 
 # CLASSE DA PÁGINA DE LOGIN
 class PaginaLogin(object):
-    # FONT
     font = 'JetBrains Mono'
-    # STYLE LABEL
     label_style = f"""font: 10pt {font}; 
                         color: white;
-                        background-color: #183e89;"""
-    # STYLE LINE EDIT
+                        background-color: #183e89;"""    
+    error_label_style_off = f"""font: 7.5pt {font};
+                                color: #183e89;
+                                background-color: #183e89"""
+    error_label_style_on = f"""font: 7.5pt {font};
+                                color: white;
+                                background-color: #183e89"""
     line_style = f"""font: 8pt {font};
                         background-color: white;
                         border-radius: 10px""" 
@@ -38,12 +41,15 @@ class PaginaLogin(object):
         self.login_menu = QGridLayout(self.login_window)
         self.login_menu.setContentsMargins(30, 20, 30, 20)
         self.login_menu.setSpacing(20)
+        
+        # Error Label
+        self.error_label = QLabel(self.login_window, text='Usuário ou senha inválidos')
+        self.error_label.setStyleSheet(self.error_label_style_off)
                 
         # Label Login
         self.login_label = QLabel(self.login_window)
         self.login_label.setText('Login')
         self.login_label.setStyleSheet(self.label_style)
-        self.login_label.setAlignment(Qt.AlignHCenter)
         
         # PLACEHOLDER TEXT COLOR
         pal = QLineEdit().palette()
@@ -103,6 +109,7 @@ class PaginaLogin(object):
         self.bottom_layout.addWidget(self.forgot_btn)
         
         # ADD TO LOGIN LAYOUT
+        self.login_menu.addWidget(self.error_label,0,0, Qt.AlignHCenter)
         self.login_menu.addWidget(self.login_label,1,0, Qt.AlignHCenter)
         self.login_menu.addWidget(self.line_user,2,0,Qt.AlignHCenter)
         self.login_menu.addWidget(self.line_password,3,0,Qt.AlignHCenter)
