@@ -1,5 +1,8 @@
 # IMPORT MODULES
 import sys
+import random
+import smtplib
+from email.message import EmailMessage
 
 # IMPORT QT_CORE
 from qt_core import *
@@ -33,14 +36,10 @@ class MainWindow(QMainWindow):
         self.ui.registro.sign_up_btn.clicked.connect(self.registrar)
         self.ui.registro.voltar.clicked.connect(self.show_login)
         
-        # EXIBE A TELA DE RECUPERAR SENHA
+        # BOTÕES DA TELA DE RECUPERAR SENHA - EMAIL
         self.ui.pagina_inicial.forgot_btn.clicked.connect(self.show_forgot)
-        
-        # VOLTA PARA A TELA DE LOGIN A PARTIR DA TELA DE RECUPERAÇÃO
         self.ui.forgot_pass.back.clicked.connect(self.show_login)
-        
-        # VAI PARA A TELA DE CÓDIGO DE RECUPERAÇÃO
-        self.ui.forgot_pass.recuperar_btn.clicked.connect(self.show_code)
+        self.ui.forgot_pass.recuperar_btn.clicked.connect(self.forgot_pass)
         
         # VOLTA PARA A TELA DE EMAIL A PARTIR DA TELA DE CÓDIGO
         self.ui.code.back.clicked.connect(self.show_forgot)
@@ -62,6 +61,31 @@ class MainWindow(QMainWindow):
         
     def show_new_pass(self) -> None:
         self.ui.pages.setCurrentWidget(self.ui.pass_page.pass_page)
+              
+    def label_error_transition(self) -> None:
+        self.timer.start(5000, self)
+        self.ui.pagina_inicial.error_label.setText('Usuário ou senha inválidos!')
+        self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_default)
+        self.ui.pagina_inicial.error_label.show()
+        
+    def autenticar(self) -> None:
+        user = self.ui.pagina_inicial.line_user.text()
+        password = self.ui.pagina_inicial.line_password.text()
+        
+        self.conexao.data('cadastro')
+        
+        for i in range(len(self.conexao.listar)):     
+            if not user == self.conexao.listar[i]['user'] or not password == self.conexao.listar[i]['password']:
+                self.label_error_transition()
+                continue
+            else:
+                if self.timer.isActive():
+                    self.timer.stop()
+                    self.timer.start(5000, self)
+                    self.ui.pagina_inicial.error_label.setText('Logado!')
+                    self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
+                    self.ui.pagina_inicial.error_label.show()
+                return
         
     def registrar(self) -> None:
         user = self.ui.registro.line_user_regi.text()
@@ -96,32 +120,26 @@ class MainWindow(QMainWindow):
             self.ui.pagina_inicial.error_label.setText('Conta criada!')
             self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
             self.ui.pagina_inicial.error_label.show()
-              
-    def label_error_transition(self) -> None:
-        self.timer.start(5000, self)
-        self.ui.pagina_inicial.error_label.setText('Usuário ou senha inválidos!')
-        self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_default)
-        self.ui.pagina_inicial.error_label.show()
+            
+    def forgot_pass(self) -> None:
+        # CONTENT
+        sender = 'ct059186@gmail.com'
+        password = '00112233aA'
+        reciever = self.ui.forgot_pass.line_email.text()
+        msgbody = random.randint(00000, 99999)
         
-    def autenticar(self) -> None:
-        user = self.ui.pagina_inicial.line_user.text()
-        password = self.ui.pagina_inicial.line_password.text()
+        # SEND EMAIL
+        msg = EmailMessage()
+        msg['subject'] = 'Código de Verificação'        
+        msg['from'] = sender
+        msg['to'] = reciever
+        msg.set_content(str(msgbody))
         
-        self.conexao.data('cadastro')
-        
-        for i in range(len(self.conexao.listar)):     
-            if not user == self.conexao.listar[i]['user'] or not password == self.conexao.listar[i]['password']:
-                self.label_error_transition()
-                continue
-            else:
-                if self.timer.isActive():
-                    self.timer.stop()
-                    self.timer.start(5000, self)
-                    self.ui.pagina_inicial.error_label.setText('Logado!')
-                    self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
-                    self.ui.pagina_inicial.error_label.show()
-                return
-        
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(sender, password)
+            
+            smtp.send_message(msg)
+            
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
