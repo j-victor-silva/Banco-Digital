@@ -1,8 +1,5 @@
 # IMPORT MODULES
-from cProfile import label
-import os
 import sys
-import time
 
 # IMPORT QT_CORE
 from qt_core import *
@@ -100,13 +97,13 @@ class MainWindow(QMainWindow):
             self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
             self.ui.pagina_inicial.error_label.show()
               
-    def label_error_transition(self):
+    def label_error_transition(self) -> None:
         self.timer.start(5000, self)
         self.ui.pagina_inicial.error_label.setText('Usuário ou senha inválidos!')
         self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_default)
         self.ui.pagina_inicial.error_label.show()
         
-    def autenticar(self):
+    def autenticar(self) -> None:
         user = self.ui.pagina_inicial.line_user.text()
         password = self.ui.pagina_inicial.line_password.text()
         
