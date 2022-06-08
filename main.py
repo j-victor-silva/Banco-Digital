@@ -13,13 +13,6 @@ from Login.loginUI.login_window import Ui_MainWindow
 # IMPORT CONNECTION
 from conexaoDB.conexao import ConexaoDB
 
-def restart_program():
-    """Restarts the current program.
-    Note: this function does not return. Any cleanup action (like
-    saving data) must be done before calling this function."""
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
-
 # MAIN WINDOW
 class MainWindow(QMainWindow): 
     def __init__(self) -> None:
