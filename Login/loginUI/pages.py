@@ -37,12 +37,15 @@ class PaginaLogin(object):
         self.login_menu.setSpacing(20)
         
         # Error Label
-        self.error_label = QLabel(self.login_window, text='Usuário ou senha inválidos')
+        self.error_label = QLabel(self.login_window)
         self.error_label.hide()
-        self.error_label.setStyleSheet(f"""background-color: #183e89;
+        self.error_label_style_default = f"""background-color: #183e89;
                                             font: 700 10pt {self.font};
-                                            color: #EF5350""")
-                
+                                            color: #EF5350"""
+        self.error_label_style_logged = f"""background-color: #183e89;
+                                            font: 700 10pt {self.font};
+                                            color: #7fba00"""
+                                            
         # Label Login
         self.login_label = QLabel(self.login_window)
         self.login_label.setText('Login')

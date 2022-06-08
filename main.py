@@ -30,10 +30,8 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setup_ui(self)
            
-        # CHAMA A CLASSE DE CONEXAO
         self.conexao = ConexaoDB()
         
-        # EXIBE A APLICAÇÃO
         self.show()
         
         # BOTÃO DE LOGIN
@@ -75,6 +73,12 @@ class MainWindow(QMainWindow):
     def show_new_pass(self) -> None:
         self.ui.pages.setCurrentWidget(self.ui.pass_page.pass_page)
         
+    def label_error_transition(self):
+        self.timer.start(5000, self)
+        self.ui.pagina_inicial.error_label.setText('Usuário ou senha inválidos!')
+        self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_default)
+        self.ui.pagina_inicial.error_label.show()
+        
     def autenticar(self):
         index = 0
         while True:
@@ -84,24 +88,25 @@ class MainWindow(QMainWindow):
             
             try:
                 if user == '' or password == '':
-                    break
+                    self.label_error_transition()
+                    return
               
                 if not user == self.conexao.listar[index]['user'] or not password == self.conexao.listar[index]['password']:
                     index += 1
 
                 if user == self.conexao.listar[index]['user'] and password == self.conexao.listar[index]['password']:
-                    valido = True
-                    print('Deu certo')
+                    if self.timer.isActive():
+                        self.timer.stop()
+                        self.timer.start(5000, self)
+                        self.ui.pagina_inicial.error_label.setText('Logado!')
+                        self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
+                        self.ui.pagina_inicial.error_label.show()
                     return
 
             except IndexError as e:
-                self.timer.start(100, self.ui.pagina_inicial.error_label.show())
-                self.timer.stop()
-                break
-        
-        
-    
-            
+                self.label_error_transition()
+                return
+                
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
