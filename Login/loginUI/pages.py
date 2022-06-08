@@ -8,12 +8,6 @@ class PaginaLogin(object):
     label_style = f"""font: 10pt {font}; 
                         color: white;
                         background-color: #183e89;"""    
-    error_label_style_off = f"""font: 7.5pt {font};
-                                color: #183e89;
-                                background-color: #183e89"""
-    error_label_style_on = f"""font: 7.5pt {font};
-                                color: white;
-                                background-color: #183e89"""
     line_style = f"""font: 8pt {font};
                         background-color: white;
                         border-radius: 10px""" 
@@ -44,7 +38,10 @@ class PaginaLogin(object):
         
         # Error Label
         self.error_label = QLabel(self.login_window, text='Usuário ou senha inválidos')
-        self.error_label.setStyleSheet(self.error_label_style_off)
+        self.error_label.hide()
+        self.error_label.setStyleSheet(f"""background-color: #183e89;
+                                            font: 700 10pt {self.font};
+                                            color: #EF5350""")
                 
         # Label Login
         self.login_label = QLabel(self.login_window)

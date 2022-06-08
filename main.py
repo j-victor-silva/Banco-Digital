@@ -12,10 +12,19 @@ from Login.loginUI.login_window import Ui_MainWindow
 # IMPORT CONNECTION
 from conexaoDB.conexao import ConexaoDB
 
+def restart_program():
+    """Restarts the current program.
+    Note: this function does not return. Any cleanup action (like
+    saving data) must be done before calling this function."""
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+
 # MAIN WINDOW
 class MainWindow(QMainWindow): 
     def __init__(self) -> None:
         super().__init__()
+        
+        self.timer = QBasicTimer()
         
         # CHAMA A CLASSE DE LOGIN
         self.ui = Ui_MainWindow()
@@ -86,10 +95,13 @@ class MainWindow(QMainWindow):
                     return
 
             except IndexError as e:
-                self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_on)
-                # time.sleep(3)
-                self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_off)
-                return
+                self.timer.start(100, self.ui.pagina_inicial.error_label.show())
+                self.timer.stop()
+                break
+        
+        
+    
+            
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
