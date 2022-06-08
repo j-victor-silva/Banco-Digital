@@ -89,27 +89,24 @@ class MainWindow(QMainWindow):
             label_error.setText('As senhas não conferem')
             label_error.show()
             return
-        
-        index = 0
-        while True:
-            self.conexao.data('cadastro')  
-            try:
-                if user == self.conexao.listar[index]['user'] or email == self.conexao.listar[index]['email']:
-                    label_error.setText('Usuário ou Email já existentes')
-                    label_error.show()
-                    return
-                else:
-                    index += 1
-                    
-                # if user == self.conexao.listar[index]['user'] and password == self.conexao.listar[index]['password']:
-                #     return
-
-            except IndexError as e:
+    
+        valido = True
+        self.conexao.data('cadastro')
+        for i in range(len(self.conexao.listar)):
+            if user == self.conexao.listar[i]['user'] or email == self.conexao.listar[i]['email']:
+                label_error.setText('Usuário ou Email já existentes')
+                label_error.show()
+                valido = False
                 return
         
-        
-            
-                
+        if valido:
+            self.conexao.cursor.execute(f'INSERT INTO `cadastro` VALUES (DEFAULT, "{user}", "{password}", "{email}")')
+            self.conexao.conexao.commit()
+            self.show_login()
+            self.ui.pagina_inicial.error_label.setText('Conta criada!')
+            self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
+            self.ui.pagina_inicial.error_label.show()
+              
     def label_error_transition(self):
         self.timer.start(5000, self)
         self.ui.pagina_inicial.error_label.setText('Usuário ou senha inválidos!')
@@ -117,33 +114,24 @@ class MainWindow(QMainWindow):
         self.ui.pagina_inicial.error_label.show()
         
     def autenticar(self):
-        index = 0
-        while True:
-            self.conexao.data('cadastro')
-            user = self.ui.pagina_inicial.line_user.text()
-            password = self.ui.pagina_inicial.line_password.text()
-            
-            try:
-                if user == '' or password == '':
-                    self.label_error_transition()
-                    return
-              
-                if not user == self.conexao.listar[index]['user'] or not password == self.conexao.listar[index]['password']:
-                    index += 1
-
-                if user == self.conexao.listar[index]['user'] and password == self.conexao.listar[index]['password']:
-                    if self.timer.isActive():
-                        self.timer.stop()
-                        self.timer.start(5000, self)
-                        self.ui.pagina_inicial.error_label.setText('Logado!')
-                        self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
-                        self.ui.pagina_inicial.error_label.show()
-                    return
-
-            except IndexError as e:
+        user = self.ui.pagina_inicial.line_user.text()
+        password = self.ui.pagina_inicial.line_password.text()
+        
+        self.conexao.data('cadastro')
+        
+        for i in range(len(self.conexao.listar)):     
+            if not user == self.conexao.listar[i]['user'] or not password == self.conexao.listar[i]['password']:
                 self.label_error_transition()
+                continue
+            else:
+                if self.timer.isActive():
+                    self.timer.stop()
+                    self.timer.start(5000, self)
+                    self.ui.pagina_inicial.error_label.setText('Logado!')
+                    self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
+                    self.ui.pagina_inicial.error_label.show()
                 return
-                
+        
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
