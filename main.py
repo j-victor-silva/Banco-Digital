@@ -1,4 +1,5 @@
 # IMPORT MODULES
+from cProfile import label
 import os
 import sys
 import time
@@ -34,13 +35,12 @@ class MainWindow(QMainWindow):
         
         self.show()
         
-        # BOTÃO DE LOGIN
+        # BOTÕES DA TELA DE LOGIN
         self.ui.pagina_inicial.login_btn.clicked.connect(self.autenticar)
-        
-        # EXIBE A TELA DE REGISTRO
         self.ui.pagina_inicial.sign_btn.clicked.connect(self.show_registro)
         
-        # VOLTA PARA A TELA DE LOGIN A PARTIR DA TELA DE REGISTRO
+        # BOTÕES DA TELA DE REGISTRO        
+        self.ui.registro.sign_up_btn.clicked.connect(self.registrar)
         self.ui.registro.voltar.clicked.connect(self.show_login)
         
         # EXIBE A TELA DE RECUPERAR SENHA
@@ -73,6 +73,43 @@ class MainWindow(QMainWindow):
     def show_new_pass(self) -> None:
         self.ui.pages.setCurrentWidget(self.ui.pass_page.pass_page)
         
+    def registrar(self) -> None:
+        user = self.ui.registro.line_user_regi.text()
+        password = self.ui.registro.line_pass_regi.text()
+        password_conf = self.ui.registro.line_pass_conf.text()
+        email = self.ui.registro.line_email_regi.text()
+        label_error = self.ui.registro.error_registro
+        
+        if user == '' or password == '' or password_conf == '' or email == '':
+            label_error.setText('Preencha todos os campos')
+            label_error.show()
+            return
+                        
+        if not password == password_conf:
+            label_error.setText('As senhas não conferem')
+            label_error.show()
+            return
+        
+        index = 0
+        while True:
+            self.conexao.data('cadastro')  
+            try:
+                if user == self.conexao.listar[index]['user'] or email == self.conexao.listar[index]['email']:
+                    label_error.setText('Usuário ou Email já existentes')
+                    label_error.show()
+                    return
+                else:
+                    index += 1
+                    
+                # if user == self.conexao.listar[index]['user'] and password == self.conexao.listar[index]['password']:
+                #     return
+
+            except IndexError as e:
+                return
+        
+        
+            
+                
     def label_error_transition(self):
         self.timer.start(5000, self)
         self.ui.pagina_inicial.error_label.setText('Usuário ou senha inválidos!')

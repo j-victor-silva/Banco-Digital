@@ -45,7 +45,7 @@ class Registro(object):
         # CREATE REGISTRO LAYOUT
         self.registro_layout = QGridLayout(self.registro_frame)        
         self.registro_layout.setContentsMargins(30,20,30,20)
-        self.registro_layout.setSpacing(20)
+        self.registro_layout.setSpacing(22)
         
         # Spacer Top
         self.spacer_top = QSpacerItem(0,20)
@@ -65,7 +65,14 @@ class Registro(object):
         # Layout Labels and Lines
         self.form_layout = QFormLayout()
         self.form_layout.setLabelAlignment(Qt.AlignLeft|Qt.AlignBottom)
-                
+
+        # Error Label
+        self.error_registro = QLabel(self.registro_frame)
+        self.error_registro.setStyleSheet(f"""background-color: #183e89;
+                                            font: 700 10pt {self.font};
+                                            color: #EF5350""")
+        self.error_registro.hide()
+        
         # Line Username
         self.label_username = QLabel(self.registro_frame,text='Usuário:')
         self.label_username.setStyleSheet(self.label_style)
@@ -155,6 +162,7 @@ class Registro(object):
         self.form_layout.setWidget(3, QFormLayout.FieldRole, self.line_email_regi)  
         
         # ADD TO LAYOUT
+        self.registro_layout.addWidget(self.error_registro,0,0, Qt.AlignHCenter)
         self.registro_layout.addWidget(self.label_registro,0,0, Qt.AlignHCenter)
         self.registro_layout.addLayout(self.form_layout, 1, 0)
         self.registro_layout.addWidget(self.sign_up_btn, 2, 0, Qt.AlignTop)
