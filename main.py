@@ -1,8 +1,11 @@
 # IMPORT MODULES
+from dis import show_code
 import sys
 import random
 import smtplib
 from email.message import EmailMessage
+from conexaoAPI.google_authenticate import service, our_email
+from base64 import urlsafe_b64decode, urlsafe_b64encode
 
 # IMPORT QT_CORE
 from qt_core import *
@@ -41,8 +44,9 @@ class MainWindow(QMainWindow):
         self.ui.forgot_pass.back.clicked.connect(self.show_login)
         self.ui.forgot_pass.recuperar_btn.clicked.connect(self.forgot_pass)
         
-        # VOLTA PARA A TELA DE EMAIL A PARTIR DA TELA DE CÓDIGO
+        # BOTÕES DA TELA DE RECUPERAR SENHA - CÓDIGO
         self.ui.code.back.clicked.connect(self.show_forgot)
+        self.ui.code.resend_code.clicked.connect(self.forgot_pass)
         
         # VAI PARA A TELA DE CRIAÇÃO DE NOVA SENHA
         self.ui.code.recuperar_btn.clicked.connect(self.show_new_pass)
@@ -121,25 +125,33 @@ class MainWindow(QMainWindow):
             self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
             self.ui.pagina_inicial.error_label.show()
             
-    def forgot_pass(self) -> None:
-        # CONTENT
-        sender = 'ct059186@gmail.com'
-        password = '00112233aA'
+    # Método para construção do email a ser enviado
+    def build_message(self) -> None:
+        msg_body = random.randint(00000, 99999)
         reciever = self.ui.forgot_pass.line_email.text()
-        msgbody = random.randint(00000, 99999)
         
-        # SEND EMAIL
+        self.code = msg_body
+        
         msg = EmailMessage()
-        msg['subject'] = 'Código de Verificação'        
-        msg['from'] = sender
+        msg['subject'] = 'Código de Verificação'      
+        msg['from'] = our_email
         msg['to'] = reciever
-        msg.set_content(str(msgbody))
-        
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login(sender, password)
-            
-            smtp.send_message(msg)
-            
+        msg.set_content(str(msg_body))
+
+        return {'raw': urlsafe_b64encode(msg.as_bytes()).decode()}
+
+    # Método para enviar o email
+    def forgot_pass(self) -> None:
+        try:
+            service.users().messages().send(
+                userId='me',
+                body=self.build_message()
+            ).execute()
+            self.show_code()
+        except:
+            self.ui.forgot_pass.label.setText('Digite um email válido!')
+            self.ui.forgot_pass.label.setStyleSheet(self.ui.pagina_inicial.error_label_style_default)
+                
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)

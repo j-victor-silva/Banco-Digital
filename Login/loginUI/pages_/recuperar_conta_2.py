@@ -57,10 +57,10 @@ class CodigoPage(object):
         
         # Label Top
         self.label = QLabel(self.code_window)
-        self.label.setText('Foi enviado um código para seu email.')
+        self.label.setText('Foi enviado um código para seu email\ncaso ele exista.')
         self.label.setStyleSheet(self.label_style)
-        self.label.setMinimumSize(QSize(269,20))
-        self.label.setMaximumSize(QSize(269,20))
+        self.label.setMinimumSize(QSize(269,25))
+        self.label.setMaximumSize(QSize(269,25))
         
         # PLACEHOLDER TEXT COLOR
         pal = QLineEdit().palette()
