@@ -46,10 +46,11 @@ class MainWindow(QMainWindow):
         
         # BOTÕES DA TELA DE RECUPERAR SENHA - CÓDIGO
         self.ui.code.back.clicked.connect(self.show_forgot)
+        self.ui.code.recuperar_btn.clicked.connect(self.authenticate_code)
         self.ui.code.resend_code.clicked.connect(self.forgot_pass)
         
-        # VAI PARA A TELA DE CRIAÇÃO DE NOVA SENHA
-        self.ui.code.recuperar_btn.clicked.connect(self.show_new_pass)
+        # BOTÃO DA TELA DE RECUPERAR SENHA - NOVA SENHA
+        self.ui.pass_page.alter_pass.clicked.connect(self.change_pass)
         
     def show_registro(self) -> None:
         self.ui.pages.setCurrentWidget(self.ui.registro.registro)
@@ -62,9 +63,6 @@ class MainWindow(QMainWindow):
     
     def show_code(self) -> None:
         self.ui.pages.setCurrentWidget(self.ui.code.code_page)
-        
-    def show_new_pass(self) -> None:
-        self.ui.pages.setCurrentWidget(self.ui.pass_page.pass_page)
               
     def label_error_transition(self) -> None:
         self.timer.start(5000, self)
@@ -92,10 +90,10 @@ class MainWindow(QMainWindow):
                 return
         
     def registrar(self) -> None:
+        email = self.ui.registro.line_email_regi.text()
         user = self.ui.registro.line_user_regi.text()
         password = self.ui.registro.line_pass_regi.text()
         password_conf = self.ui.registro.line_pass_conf.text()
-        email = self.ui.registro.line_email_regi.text()
         label_error = self.ui.registro.error_registro
         
         if user == '' or password == '' or password_conf == '' or email == '':
@@ -127,16 +125,14 @@ class MainWindow(QMainWindow):
             
     # Método para construção do email a ser enviado
     def build_message(self) -> None:
-        msg_body = random.randint(00000, 99999)
-        reciever = self.ui.forgot_pass.line_email.text()
-        
-        self.code = msg_body
+        self.code = random.randint(00000, 99999)
+        self.reciever = self.ui.forgot_pass.line_email.text()
         
         msg = EmailMessage()
         msg['subject'] = 'Código de Verificação'      
         msg['from'] = our_email
-        msg['to'] = reciever
-        msg.set_content(str(msg_body))
+        msg['to'] = self.reciever
+        msg.set_content(str(self.code))
 
         return {'raw': urlsafe_b64encode(msg.as_bytes()).decode()}
 
@@ -151,6 +147,28 @@ class MainWindow(QMainWindow):
         except:
             self.ui.forgot_pass.label.setText('Digite um email válido!')
             self.ui.forgot_pass.label.setStyleSheet(self.ui.pagina_inicial.error_label_style_default)
+            
+    def authenticate_code(self) -> None:
+        if self.ui.code.line_code.text() == str(self.code):
+            self.ui.pages.setCurrentWidget(self.ui.pass_page.pass_page)         
+        else:
+            self.ui.code.label.setText('O código digitado está incorreto')
+            self.ui.code.label.setStyleSheet(self.ui.pagina_inicial.error_label_style_default)
+            
+    def change_pass(self) -> None:
+        password = self.ui.pass_page.first_pass.text()
+        pass_conf = self.ui.pass_page.conf_pass.text()
+
+        if password == pass_conf:
+            self.conexao.cursor.execute(f'UPDATE `cadastro` SET `password` = "{password}" WHERE `email` = "{self.reciever}"')
+            self.conexao.conexao.commit()
+            self.show_login()
+            self.ui.pagina_inicial.error_label.setText('Senha alterada com sucesso!')
+            self.ui.pagina_inicial.error_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_logged)
+            self.ui.pagina_inicial.error_label.show()
+        else:
+            self.ui.pass_page.top_label.setText('As senhas não conferem')
+            self.ui.pass_page.top_label.setStyleSheet(self.ui.pagina_inicial.error_label_style_default)
                 
         
 if __name__ == '__main__':

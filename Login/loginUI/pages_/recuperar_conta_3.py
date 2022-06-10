@@ -59,6 +59,7 @@ class PasswordPage(object):
         
         # First Password
         self.first_pass = QLineEdit(self.pass_window, placeholderText='Digita a senha')
+        self.first_pass.setEchoMode(QLineEdit.EchoMode.Password)
         self.first_pass.setStyleSheet(self.line_style)
         self.first_pass.setPalette(self.text_color)
         self.first_pass.setMinimumSize(QSize(269,44))
@@ -66,6 +67,7 @@ class PasswordPage(object):
         
         # Conf. Password
         self.conf_pass = QLineEdit(self.pass_window, placeholderText='Digita a senha')
+        self.conf_pass.setEchoMode(QLineEdit.EchoMode.Password)
         self.conf_pass.setStyleSheet(self.line_style)
         self.conf_pass.setPalette(self.text_color)
         self.conf_pass.setMinimumSize(QSize(269,44))
