@@ -1,11 +1,12 @@
 # IMPORT QT_CORE
 from qt_core import *
+
+# IMPORT PAGES
 from Login.loginUI.pages import PaginaLogin
 from Login.loginUI.pages_.registro import Registro
 from Login.loginUI.pages_.recuperar_conta_1 import RecuperarConta
 from Login.loginUI.pages_.recuperar_conta_2 import CodigoPage
 from Login.loginUI.pages_.recuperar_conta_3 import PasswordPage
-
 
 # MAIN WINDOW
 class Ui_MainWindow(object):
@@ -14,7 +15,6 @@ class Ui_MainWindow(object):
             parent.setObjectName('MainWindow')
         parent.setWindowTitle('Login')      
         
-        self.font = 'JetBrains Mono'  
             
         # SET INITIAL PARAMETERS
         parent.resize(960, 600)
@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
         self.pages.setCurrentWidget(self.pagina_inicial.login)
         
         # ADD TO MAIN LAYOUT
-        self.main_layout.addWidget(self.pages)
+        self.main_layout.addWidget(self.pages, 0, 0, 1, 1, Qt.AlignCenter)
                 
         # SET TO CENTRAL WIDGET
         parent.setCentralWidget(self.central_frame)

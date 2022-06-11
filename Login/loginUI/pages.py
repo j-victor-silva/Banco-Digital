@@ -1,17 +1,11 @@
 # IMPORT QT CORE
 from qt_core import *
 
+# IMPORT STYLESHEETS
+from stylesheets.stylesheets import *
 
 # CLASSE DA PÁGINA DE LOGIN
 class PaginaLogin(object):
-    font = 'JetBrains Mono'
-    label_style = f"""font: 10pt {font}; 
-                        color: white;
-                        background-color: #183e89;"""    
-    line_style = f"""font: 8pt {font};
-                        background-color: white;
-                        border-radius: 10px""" 
-                        
     def setupUi(self, StackedWidget) -> None:
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u"StackedWidget")
@@ -39,17 +33,11 @@ class PaginaLogin(object):
         # Error Label
         self.error_label = QLabel(self.login_window)
         self.error_label.hide()
-        self.error_label_style_default = f"""background-color: #183e89;
-                                            font: 700 10pt {self.font};
-                                            color: #EF5350"""
-        self.error_label_style_logged = f"""background-color: #183e89;
-                                            font: 700 10pt {self.font};
-                                            color: #7fba00"""
-                                            
+
         # Label Login
         self.login_label = QLabel(self.login_window)
         self.login_label.setText('Login')
-        self.login_label.setStyleSheet(self.label_style)
+        self.login_label.setStyleSheet(label_style)
         
         # PLACEHOLDER TEXT COLOR
         pal = QLineEdit().palette()
@@ -59,24 +47,23 @@ class PaginaLogin(object):
         # Line Username
         self.line_user = QLineEdit(self.login_window, placeholderText='Username')
         self.line_user.setMinimumSize(269, 44)
-        self.line_user.setStyleSheet(self.line_style)
+        self.line_user.setStyleSheet(line_style)
         self.line_user.setPalette(self.text_color)
+        self.line_user.addAction(icon_user, QLineEdit.LeadingPosition)
+        self.line_user.setFocus()
         
         # Line Password
         self.line_password = QLineEdit(self.login_window, placeholderText='Password')
         self.line_password.setMinimumSize(269, 44)
-        self.line_password.setStyleSheet(self.line_style)
+        self.line_password.setStyleSheet(line_style)
         self.line_password.setPalette(self.text_color)
         self.line_password.setEchoMode(QLineEdit.EchoMode.Password)
+        self.line_password.addAction(icon_password, QLineEdit.LeadingPosition)
         
         # Login Button
         self.login_btn = QPushButton(self.login_window, text='Entrar')
         self.login_btn.setMinimumSize(269, 44)
-        self.login_btn.setStyleSheet(f"""background-color: #0d81a5;
-                                        border-radius: 10px;
-                                        border: none;
-                                        font: 10pt {self.font};
-                                        color: white""")
+        self.login_btn.setStyleSheet(main_button)
         
         # Spacer Inter-Lines
         self.spacer = QSpacerItem(268, 85)
@@ -86,11 +73,7 @@ class PaginaLogin(object):
         
         # Registro Button
         self.sign_btn = QPushButton(self.login_window, text='Registrar')
-        self.sign_btn.setStyleSheet(f"""font: 7.5pt {self.font};
-                                        background-color: #183e89;
-                                        color: white;
-                                        border-radius: 10px;
-                                        border: none""")
+        self.sign_btn.setStyleSheet(alter_button)
         
         # Bottom Spacer
         self.bottom_spacer = QSpacerItem(80, 15)
@@ -98,10 +81,7 @@ class PaginaLogin(object):
         # Forgot Password Button
         self.forgot_btn = QPushButton(self.login_window)
         self.forgot_btn.setText('Esqueci minha senha')
-        self.forgot_btn.setStyleSheet(f"""font: 7.5pt {self.font};
-                                          background-color: #183e89;
-                                          color: white;
-                                          border: none""")
+        self.forgot_btn.setStyleSheet(alter_button)
         
         # Add to Bottom Layout 
         self.bottom_layout.addWidget(self.sign_btn)

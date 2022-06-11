@@ -1,20 +1,12 @@
 # IMPORT QT CORE
 from qt_core import *
 
+# IMPORT STYLESHEETS
+from stylesheets.stylesheets import *
+
 
 # CLASSE DA TELA DE REGISTRO
 class Registro(object):
-    # FONT
-    font = 'JetBrains Mono'
-    # STYLE LABEL
-    label_style = f"""font: 9pt {font}; 
-                        color: white;
-                        background-color: #183e89;"""
-    # STYLE LINE EDIT
-    line_style = f"""font: 8pt {font};
-                        background-color: white;
-                        border-radius: 10px"""
-              
     def setupUi(self, StackedWidget):
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u"StackedWidget")
@@ -38,7 +30,8 @@ class Registro(object):
         self.registro_frame = QFrame(self.registro)
         self.registro_frame.setObjectName('registro_frame')
         self.registro_frame.setStyleSheet("""#registro_frame {
-                                            background-color: #183e89; }""")
+                                            background-color: #183e89; 
+                                            }""")
         self.registro_frame.setMinimumSize(QSize(341, 465))
         self.registro_frame.setMaximumSize(QSize(341, 465))
         
@@ -52,10 +45,6 @@ class Registro(object):
         
         # Label Registro
         self.label_registro = QLabel(self.registro_frame)
-        self.label_registro.setText('Registro')
-        self.label_registro.setStyleSheet(self.label_style)
-        self.label_registro.setMinimumSize(QSize(60,20))
-        self.label_registro.setMaximumSize(QSize(60,20))
         
         # PLACEHOLDER TEXT COLOR
         pal = QLineEdit().palette()
@@ -65,17 +54,10 @@ class Registro(object):
         # Layout Labels and Lines
         self.form_layout = QFormLayout()
         self.form_layout.setLabelAlignment(Qt.AlignLeft|Qt.AlignBottom)
-
-        # Error Label
-        self.error_registro = QLabel(self.registro_frame)
-        self.error_registro.setStyleSheet(f"""background-color: #183e89;
-                                            font: 700 10pt {self.font};
-                                            color: #EF5350""")
-        self.error_registro.hide()
         
         # Line Username
         self.label_username = QLabel(self.registro_frame,text='Usuário:')
-        self.label_username.setStyleSheet(self.label_style)
+        self.label_username.setStyleSheet(label_style)
         self.label_username.setSizePolicy(sizePolicy_label)
         
         sizePolicy_label.setHeightForWidth(self.label_username.sizePolicy().hasHeightForWidth())
@@ -84,66 +66,63 @@ class Registro(object):
         self.line_user_regi = QLineEdit(self.registro_frame,placeholderText='Username')
         self.line_user_regi.setMinimumSize(QSize(197, 35))
         self.line_user_regi.setMaximumSize(QSize(197, 35))
-        self.line_user_regi.setStyleSheet(self.line_style)
+        self.line_user_regi.setStyleSheet(line_style)
         self.line_user_regi.setPalette(self.text_color)
+        self.line_user_regi.addAction(icon_user, QLineEdit.LeadingPosition)
         
         sizePolicy.setHeightForWidth(self.line_user_regi.sizePolicy().hasHeightForWidth())
         self.line_user_regi.setSizePolicy(sizePolicy)
         
         # Line Password INIT
         self.label_password = QLabel(self.registro_frame,text='Senha:')
-        self.label_password.setStyleSheet(self.label_style)
+        self.label_password.setStyleSheet(label_style)
         self.label_password.setSizePolicy(sizePolicy_label)
         self.label_password.setAlignment(Qt.AlignBottom | Qt.AlignRight)
         
         self.line_pass_regi = QLineEdit(self.registro_frame,placeholderText='Password')
         self.line_pass_regi.setMinimumSize(QSize(197,35))
         self.line_pass_regi.setMaximumSize(QSize(197,35))
-        self.line_pass_regi.setStyleSheet(self.line_style)
+        self.line_pass_regi.setStyleSheet(line_style)
         self.line_pass_regi.setPalette(self.text_color)
         self.line_pass_regi.setEchoMode(QLineEdit.EchoMode.Password)
+        self.line_pass_regi.addAction(icon_password, QLineEdit.LeadingPosition)
         
         # Line Password CONFIRM
         self.label_password_conf = QLabel(self.registro_frame,text='C. Senha:')
-        self.label_password_conf.setStyleSheet(self.label_style)
+        self.label_password_conf.setStyleSheet(label_style)
         self.label_password_conf.setSizePolicy(sizePolicy_label)
         self.label_password_conf.setAlignment(Qt.AlignBottom)
         
         self.line_pass_conf = QLineEdit(self.registro_frame,placeholderText='Password')
         self.line_pass_conf.setMinimumSize(QSize(197,35))
         self.line_pass_conf.setMaximumSize(QSize(197,35))
-        self.line_pass_conf.setStyleSheet(self.line_style)
+        self.line_pass_conf.setStyleSheet(line_style)
         self.line_pass_conf.setPalette(self.text_color)
         self.line_pass_conf.setEchoMode(QLineEdit.EchoMode.Password)
+        self.line_pass_conf.addAction(icon_password, QLineEdit.LeadingPosition)
         
         # Line Email
         self.label_email = QLabel(self.registro_frame,text='Email:')
-        self.label_email.setStyleSheet(self.label_style)
+        self.label_email.setStyleSheet(label_style)
         self.label_email.setSizePolicy(sizePolicy_label)
         self.label_email.setAlignment(Qt.AlignBottom)
         
         self.line_email_regi = QLineEdit(self.registro_frame,placeholderText='Email')
         self.line_email_regi.setMinimumSize(QSize(197, 35))
         self.line_email_regi.setMaximumSize(QSize(197, 35))
-        self.line_email_regi.setStyleSheet(self.line_style)
+        self.line_email_regi.setStyleSheet(line_style)
         self.line_email_regi.setPalette(self.text_color)
+        self.line_email_regi.addAction(icon_email, QLineEdit.LeadingPosition)
         
         # Sign Up Button
         self.sign_up_btn = QPushButton(self.registro_frame,text='Registrar')
         self.sign_up_btn.setMinimumHeight(44)
         self.sign_up_btn.setMaximumWidth(283)
-        self.sign_up_btn.setStyleSheet(f"""background-color: #0d81a5;
-                                            border: none;
-                                            border-radius: 10px;
-                                            font: 10pt {self.font};
-                                            color: white""")
+        self.sign_up_btn.setStyleSheet(main_button)
         
         # Back Button
         self.voltar = QPushButton(self.registro_frame,text='Voltar')
-        self.voltar.setStyleSheet(f"""background-color: #183e89;
-                                        border: none;
-                                        color: white;
-                                        font: 7.5pt {self.font}""")
+        self.voltar.setStyleSheet(alter_button)
         
         # Spacer Inter-Lines
         self.spacer = QSpacerItem(0,20)      
@@ -162,7 +141,6 @@ class Registro(object):
         self.form_layout.setWidget(3, QFormLayout.FieldRole, self.line_email_regi)  
         
         # ADD TO LAYOUT
-        self.registro_layout.addWidget(self.error_registro,0,0, Qt.AlignHCenter)
         self.registro_layout.addWidget(self.label_registro,0,0, Qt.AlignHCenter)
         self.registro_layout.addLayout(self.form_layout, 1, 0)
         self.registro_layout.addWidget(self.sign_up_btn, 2, 0, Qt.AlignTop)

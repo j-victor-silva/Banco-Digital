@@ -1,20 +1,12 @@
 # IMPORT MODULES
 from qt_core import *
 
+# IMPORT STYLESHEETS
+from stylesheets.stylesheets import *
+
 
 # CLASSE DA PÁGINA DE SENHA
 class PasswordPage(object):
-    # FONT
-    font = 'JetBrains Mono'
-    # STYLE LABEL
-    label_style = f"""font: 9pt {font}; 
-                        color: white;
-                        background-color: #183e89;"""
-    # STYLE LINE EDIT
-    line_style = f"""font: 8pt {font};
-                        background-color: white;
-                        border-radius: 10px"""
-    
     def setupUi(self, StackedWidget):
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u'StackedWidget')
@@ -48,9 +40,7 @@ class PasswordPage(object):
         
         # Label Top
         self.top_label = QLabel(self.pass_window, text='Digite a nova senha')
-        self.top_label.setStyleSheet(self.label_style)
-        self.top_label.setMinimumSize(QSize(140, 20))
-        self.top_label.setMaximumSize(QSize(140, 20))
+        self.top_label.setStyleSheet(label_style)
         
         # PLACEHOLDER TEXT COLOR
         pal = QLineEdit().palette()
@@ -58,28 +48,26 @@ class PasswordPage(object):
         pal.setColor(QPalette.PlaceholderText, self.text_color)
         
         # First Password
-        self.first_pass = QLineEdit(self.pass_window, placeholderText='Digita a senha')
+        self.first_pass = QLineEdit(self.pass_window, placeholderText='Digite a senha')
         self.first_pass.setEchoMode(QLineEdit.EchoMode.Password)
-        self.first_pass.setStyleSheet(self.line_style)
+        self.first_pass.setStyleSheet(line_style)
         self.first_pass.setPalette(self.text_color)
         self.first_pass.setMinimumSize(QSize(269,44))
         self.first_pass.setMaximumSize(QSize(269,44))
+        self.first_pass.addAction(icon_password, QLineEdit.LeadingPosition)
         
         # Conf. Password
-        self.conf_pass = QLineEdit(self.pass_window, placeholderText='Digita a senha')
+        self.conf_pass = QLineEdit(self.pass_window, placeholderText='Digite a senha')
         self.conf_pass.setEchoMode(QLineEdit.EchoMode.Password)
-        self.conf_pass.setStyleSheet(self.line_style)
+        self.conf_pass.setStyleSheet(line_style)
         self.conf_pass.setPalette(self.text_color)
         self.conf_pass.setMinimumSize(QSize(269,44))
         self.conf_pass.setMaximumSize(QSize(269,44))
+        self.conf_pass.addAction(icon_password, QLineEdit.LeadingPosition)
         
         # Alter Password Button
         self.alter_pass = QPushButton(self.pass_window, text='Alterar')
-        self.alter_pass.setStyleSheet(f"""background-color: #0d81a5;
-                                            color: white;
-                                            border: none;
-                                            border-radius: 10px;
-                                            font: 10pt {self.font}""")
+        self.alter_pass.setStyleSheet(main_button)
         self.alter_pass.setMinimumSize(QSize(269,44))
         self.alter_pass.setMaximumSize(QSize(269,44))
         
@@ -88,6 +76,4 @@ class PasswordPage(object):
         self.pass_layout.addWidget(self.first_pass,1, Qt.AlignHCenter)
         self.pass_layout.addWidget(self.conf_pass,2, Qt.AlignHCenter)
         self.pass_layout.addWidget(self.alter_pass,3, Qt.AlignHCenter)
-        
-        
         

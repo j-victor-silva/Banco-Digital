@@ -1,21 +1,12 @@
 # IMPORT QT CORE
-from logging import PlaceHolder
 from qt_core import *
+
+# IMPORT STYLESHEETS
+from stylesheets.stylesheets import *
 
 
 # CLASSE DA PÁGINA DE RECUPERAR CONTA
 class RecuperarConta(object):
-    # FONT
-    font = 'JetBrains Mono'
-    # STYLE LABEL
-    label_style = f"""font: 9pt {font}; 
-                        color: white;
-                        background-color: #183e89;"""
-    # STYLE LINE EDIT
-    line_style = f"""font: 8pt {font};
-                        background-color: white;
-                        border-radius: 10px"""
-    
     def setupUi(self, StackedWidget) -> None:
         if not StackedWidget.objectName():
             StackedWidget.setObjectName(u'StackedWidget')
@@ -51,7 +42,7 @@ class RecuperarConta(object):
         # Label Top
         self.label = QLabel(self.forgot_pass_frame)
         self.label.setText('Recuperar Conta')
-        self.label.setStyleSheet(self.label_style)
+        self.label.setStyleSheet(label_style)
         
         # PLACEHOLDER TEXT COLOR
         pal = QLineEdit().palette()
@@ -60,29 +51,21 @@ class RecuperarConta(object):
         
         # Line Email
         self.line_email = QLineEdit(self.forgot_pass_frame, placeholderText='Email')
-        self.line_email.setStyleSheet(self.line_style)
+        self.line_email.setStyleSheet(line_style)
         self.line_email.setMinimumSize(QSize(269,44))
         self.line_email.setMaximumSize(QSize(269,44))
         self.line_email.setPalette(self.text_color)
+        self.line_email.addAction(icon_email, QLineEdit.LeadingPosition)
         
         # Recuperar Button
         self.recuperar_btn = QPushButton(self.forgot_pass_frame, text='Recuperar')
-        self.recuperar_btn.setStyleSheet(f"""background-color: #0d81a5;
-                                            border: none;
-                                            border-radius: 10px;
-                                            font: 10pt {self.font};
-                                            color: white
-                                         """)
+        self.recuperar_btn.setStyleSheet(main_button)
         self.recuperar_btn.setMinimumSize(QSize(269,44))
         self.recuperar_btn.setMaximumSize(QSize(269,44))
         
         # Voltar Button
         self.back = QPushButton(self.forgot_pass_frame, text='Voltar')
-        self.back.setStyleSheet(f"""background-color: #183e89;
-                                    color: white;
-                                    border: none""")
-        
-        
+        self.back.setStyleSheet(alter_button)
         
         # ADD TO MAIN LAYOUT
         self.layout.addWidget(self.label,0, Qt.AlignHCenter)
