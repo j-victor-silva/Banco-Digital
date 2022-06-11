@@ -116,6 +116,12 @@ class MainWindow(QMainWindow):
             label_error_.setText('As senhas não conferem')
             label_error_.setStyleSheet(label_error)
             return
+        
+        if not len(password) >= 8:
+            label_error_.setText('A senha precisa ser maior')
+            label_error_.setStyleSheet(label_error)
+            return
+            
     
         valido = True
         self.conexao.data('cadastro')
@@ -169,6 +175,11 @@ class MainWindow(QMainWindow):
     def change_pass(self) -> None:
         password = self.ui.pass_page.first_pass.text()
         pass_conf = self.ui.pass_page.conf_pass.text()
+
+        if not len(password) >= 8:
+            self.ui.pass_page.top_label.setText('A senha precisa ser maior')
+            self.ui.pass_page.top_label.setStyleSheet(label_error)
+            return
 
         if password == pass_conf:
             self.conexao.cursor.execute(f'UPDATE `cadastro` SET `password` = "{password}" WHERE `email` = "{self.reciever}"')
